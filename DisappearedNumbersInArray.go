@@ -20,6 +20,7 @@ func findDisappearedNumbers(nums []int) []int {
     }
     return solution
 }
+
 // Better solution
 func findDisappearedNumbers(nums []int) []int {
     n := len(nums)
