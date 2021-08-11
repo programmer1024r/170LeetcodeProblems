@@ -4,20 +4,20 @@ Input: target number (int)
 Output: number of combinations 
 */
 func climbStairs(n int) int {
-    var combinationsPerPlace []int
-    for i := 0; i < n; i++ {
-        combinationsPerPlace = append(combinationsPerPlace, 0)
-    }
+
     // on the n stair you have one option and it's not to move, and on the n -1 is always to jump 1 means one option 
-    nIndex := n - 1
-    combinationsPerPlace[nIndex] = 1
-    combinationsPerPlace[nIndex - 1] = 1
+    // if n = 5, the nextStair is on the 4th stair and the afterNextStair is the 5th stair
+    nextStair := 1
+    afterNextStair := 1
 
-    // going backwards through the array of combinations
+    // going backwards through the  combinations
     // every time you go to the next stair or to the next next stair. means all the combinations from your stair +1 and all the combinations from your stair + 2
-    for i := nIndex - 2; i >= 0; i-- {
-        combinationsPerPlace[i] = combinationsPerPlace[i + 1] + combinationsPerPlace[i + 2]
+    for i :=  2; i < n; i++ {
+        currentStair := nextStair + afterNextStair
+        afterNextStair = nextStair
+        nextStair = currentStair
+
     }
 
-    return combinationsPerPlace[0]
+    return currentStair
 }
