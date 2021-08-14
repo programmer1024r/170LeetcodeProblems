@@ -36,3 +36,26 @@ func climbStairs(n int) int {
 
     return currentStair
 }
+
+// Second Time Solution
+
+/*
+Use: Find the number of distinct ways to get to the target number by 1 or 2
+Input: target number (int)
+Output: number of combinations 
+*/
+func climbStairs(n int) int {
+
+    nextStairC := 1
+    afterNextStairC := 1
+    currentCombo := 1
+
+    for i := n - 2; i >= 0; i-- {
+        currentCombo = nextStairC + afterNextStairC
+        // Update next stairs
+        afterNextStairC = nextStairC
+        nextStairC = currentCombo
+    }
+
+    return currentCombo
+}
